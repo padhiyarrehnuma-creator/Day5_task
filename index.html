@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>Registeration Form</title>
+    <!-- Google Fonts: clean, modern -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">           
+</head>
+<body>
+
+    <div class="popup-overlay" id="successPopup">
+        <div class="popup-box">
+            <i class="fas fa-check-circle"></i>
+            <h3>Registration Successful!</h3>
+            <p>Your account has been created. Welcome aboard.</p>
+            <button onclick="closePopup()">Continue</button>
+        </div>
+    </div>
+
+    <div class="split-card">
+
+        <div class="split-left">
+            
+            <h1 id="autoTypeHeading">
+                <span id="autoTypeText"></span><span class="auto-type-cursor"></span>
+            </h1>
+            <p>Modern, clean & secure. Join the community.</p>
+            <div class="deco-icons">
+                <i class="fas fa-cube"></i>
+                <i class="fas fa-circle-nodes"></i>
+                <i class="fas fa-bolt"></i>
+            </div>
+        </div>
+
+        <div class="split-right">
+            <div class="form-header">
+                <h2>Registeration Form</h2>
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i> <span>Dark</span></button>
+            </div>
+
+            <form id="registerForm" novalidate>
+                <div class="form-grid">
+
+                    <div class="input-group full-width">
+                        <label><i class="far fa-user" style="margin-right: 6px;"></i>Full Name</label>
+                        <input type="text" id="fullName" placeholder="Enter your name" required>
+                        <div class="error-message" id="fullNameError"></div>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label><i class="far fa-envelope" style="margin-right: 6px;"></i>Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your Email" required>
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label><i class="fas fa-lock" style="margin-right: 6px;"></i>Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                            <button type="button" class="toggle-pw" id="togglePassword"><i class="fas fa-eye"></i></button>
+                        </div>
+                        <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+                        <div class="strength-text" id="strengthText">weak</div>
+                        <div class="error-message" id="passwordError"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label><i class="fas fa-check-circle" style="margin-right: 6px;"></i>Confirm Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="confirmPassword" placeholder="Confirm the password" required>
+                            <button type="button" class="toggle-pw" id="toggleConfirmPassword"><i class="fas fa-eye"></i></button>
+                        </div>
+                        <div class="error-message" id="confirmError"></div>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label><i class="fas fa-calendar-alt" style="margin-right: 6px;"></i>Date of Birth</label>
+                        <input type="date" id="dob" placeholder="Date of birth" required>
+                        <div class="error-message" id="dobError"></div>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label>Gender</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="gender" value="Male" required> Male</label>
+                            <label><input type="radio" name="gender" value="Female"> Female</label>
+                            <label><input type="radio" name="gender" value="Other"> Other</label>
+                        </div>
+                        <div class="error-message" id="genderError"></div>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label><i class="fas fa-graduation-cap" style="margin-right: 6px;"></i>Select Course</label>
+                        <select id="course" required>
+                            <option value="">— choose —</option>
+                            <option value="frontend">Frontend Development</option>
+                            <option value="backend">Backend Development</option>
+                            <option value="fullstack">Full Stack</option>
+                            <option value="design">UI/UX Design</option>
+                        </select>
+                        <div class="error-message" id="courseError"></div>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label><i class="fas fa-phone-alt" style="margin-right: 6px;"></i>Phone Number</label>
+                        <div class="phone-wrapper">
+                            <select id="countryCode">
+                                <option value="+91">🇮🇳 +91</option>
+                                <option value="+1">🇺🇸 +1</option>
+                                <option value="+44">🇬🇧 +44</option>
+                                <option value="+61">🇦🇺 +61</option>
+                                <option value="+81">🇯🇵 +81</option>
+                                <option value="+49">🇩🇪 +49</option>
+                            </select>
+                            <input type="tel" id="phone" placeholder="Enter Phone Number" required>
+                        </div>
+                        <div class="error-message" id="phoneError"></div>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label><i class="fas fa-map-pin" style="margin-right: 6px;"></i>Address</label>
+                        <textarea id="address" rows="2" placeholder="Street, city, state..." required></textarea>
+                        <div class="error-message" id="addressError"></div>
+                    </div>
+
+                    <button type="submit" class="register-btn"><i class="fas fa-arrow-right" style="margin-right: 10px;"></i>Register Now</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
